@@ -58,7 +58,9 @@ while (1) {
     }
 
     // Do not betting here
-    echo "($nextbet) [$win]\n";
+    shell_exec(
+        'echo "[`date`] (bet: '.round($previousbet*10^8,8).') [win: '.$win.']" >> "/home/`whoami`/TPM/mods/betmeup/debug.log"'
+    );
     // sleep for 0.1 second.
     usleep(100000);
 }
@@ -75,4 +77,3 @@ function placeBet($amount = 0, $chance = 49.95, $bethigh = true) {
     $chance   = round($chance,2);    
     return request("/?action=bet&amount=$amt&chance=$chance&bethi=$bethigh");
 }
-# TODO: add logging
