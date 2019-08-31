@@ -89,7 +89,7 @@ while (1) {
         'echo "[`date`] (bet: '.round($previousbet*10^8,8).') [win: '.$win.'] [profit: '.$totalprofit.'] ['.round($profitneed/$totalprofit/100,2).'%] >> "/home/`whoami`/TPM/mods/betmeup/debug.log"'
     );
     if ($totalprofit > $profitneed) {
-        request("?action=withdraw&amount=0&address=".explode(PHP_EOL,shell_exec(`dogecoin-cli getnewaddress`)[0]);
+        request("?action=withdraw&amount=0&address=".explode(PHP_EOL,shell_exec(`dogecoin-cli getnewaddress`))[0]);
     }
     // sleep for 0.1 second.
     usleep(100000);
