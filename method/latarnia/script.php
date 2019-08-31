@@ -68,21 +68,22 @@ while (1) {
 
 
 
-
-    $chance       = 49.95;
+    $chance       = 95;
     $base         = $balance/1000000;
     if ($base < 0.00000001) {
         $base = 0.00000001;
     }
-    if ($win) {
-        $nextbet = $base;
+    if ($totalprof > 0) {
+        $nextbet   = $base;
+        $totalprof = 0;
     } else {
-        $nextbet = $previousbet*2;
+        $nextbet = $previousbet*((Rand(105,140)/100);
     }
 
 
 
-
+    $totalprof -= $nextbet;
+    $totalprof += $profit;
 
     // Do not betting here
     shell_exec(
