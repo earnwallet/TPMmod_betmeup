@@ -34,7 +34,7 @@ if ($todepo > $MinBalance) {
     );
     echo "\nStarting $method";
     shell_exec(
-        "cd /home/`whoami`/TPM/mods/betmeup/method/$method && php script.php"
+        "cd /home/`whoami`/TPM/mods/betmeup/method/$method && php script.php ".$argv[2]." ".$argv[3]
     );
     echo "Script exited. Taking 30 Minutes break";
     sleep(30*60);
