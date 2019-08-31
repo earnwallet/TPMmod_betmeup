@@ -9,10 +9,12 @@ $port     = $argv[2];
 // Get balance;
 $tpmbalance  = explode(PHP_EOL, shell_exec(`dogecoin-cli getbalance`))[0];
 $dicebalance = request("?action=balance");
-
+$nextbet     = 0;
+$chance      = 49.95;
+$bethigh     = false;
 while (1) {
     // Define variables
-    $resp        = placeBet(0,49.95,true);
+    $resp        = placeBet($nextbet,$chance,$bethigh);
     try {
         $resp    = json_decode($resp);
     } catch ( Exception $e ) {
@@ -56,6 +58,7 @@ while (1) {
     }
 
     // Do not betting here
+    echo "($nextbet) [$win]\n";
     // sleep for 0.1 second.
     usleep(100000);
 }
