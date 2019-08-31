@@ -12,6 +12,8 @@ $dicebalance = request("?action=balance");
 $nextbet     = 0;
 $chance      = 49.95;
 $bethigh     = false;
+sleep(60); //Let the deposit credit.
+// TODO: check balance instead of sleep
 while (1) {
     // Define variables
     $resp        = placeBet($nextbet,$chance,$bethigh);
