@@ -28,7 +28,7 @@ if ($todepo > $MinBalance) {
     sleep(30*60);
 } else {
     echo "\nStarting $method";
-    echo "\nSending $todepo DOGE to $depoadd
+    echo "\nSending $todepo DOGE to $depoadd";
     shell_exec(
         "dogecoin-cli sendtoaddress $depoadd $todepo"
     );
