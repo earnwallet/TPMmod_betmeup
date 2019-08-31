@@ -21,7 +21,7 @@ $depoadd = file_get_contents(
     );
 $todepo  = $balance*$BalancePercent/100;
 if ($todepo > $MaxBalance) {
-    $todepo = $MaxBalance
+    $todepo = $MaxBalance;
 }
 if ($todepo > $MinBalance) {
     echo "\nCan't start $method. Taking break: 30 Minutes";
