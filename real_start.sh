@@ -1,11 +1,11 @@
-cd "/home/`whoami`/TPM/mods/betmeup";
-ports=`cat ports.txt`;
 cd "/home/`whoami`/TPM/mods/betmeup/method"
 
 for f in *;
 do
-    for g in "$ports.$f.conf";
+    for g in "$f/ports.conf";
     do
-        php startscript.php $f 127.0.0.1 $g
+        cd "/home/`whoami`/TPM/mods/betmeup/method/$f";
+        screen -dm php startscript.php $f 127.0.0.1 $g;
+        cd "/home/`whoami`/TPM/mods/betmeup/method"
     done
 done;
