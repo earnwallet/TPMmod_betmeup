@@ -77,7 +77,7 @@ while (1) {
         $nextbet   = $base;
         $totalprof = 0;
     } else {
-        $nextbet = $previousbet*((Rand(105,140)/100);
+        $nextbet = $previousbet*((rand(105,140))/100);
     }
 
 
