@@ -18,7 +18,7 @@ $port     = $argv[2];
 // Get balance;
 sleep(30);   // Let the wallet load
 // TODO: check if wallet is loaded instead of sleep
-$tpmbalance  = explode(PHP_EOL, shell_exec(`dogecoin-cli getbalance`))[0];
+$tpmbalance  = explode(PHP_EOL, shell_exec("dogecoin-cli getbalance"))[0];
 $dicebalance = request("?action=balance");
 $profitneed  = round($tpmbalance*($BalancePercent/100)*(($profit/100)+1),4);
 $totalprofit = -2; // Fee for withdrawal+deposit
@@ -89,7 +89,7 @@ while (1) {
         'echo "[`date`] (bet: '.round($previousbet*10^8,8).') [win: '.$win.'] [profit: '.$totalprofit.'] ['.round($profitneed/$totalprofit/100,2).'%] >> "/home/`whoami`/TPM/mods/betmeup/debug.log"'
     );
     if ($totalprofit > $profitneed) {
-        request("?action=withdraw&amount=0&address=".explode(PHP_EOL,shell_exec(`dogecoin-cli getnewaddress`))[0]);
+        request("?action=withdraw&amount=0&address=".explode(PHP_EOL,shell_exec("dogecoin-cli getnewaddress"))[0]);
     }
     // sleep for 0.1 second.
     usleep(100000);
