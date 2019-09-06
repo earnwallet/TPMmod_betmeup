@@ -18,7 +18,7 @@ include "/home/$username/TPM/mods/betmeup/method/$method/settings.php";
 //$depoadd = file_get_contents(
 //        "http://".$argv[2].":".$argv[3]."/?action=deposit"
 //    );
-//$todepo  = $balance*$BalancePercent/100;
+$todepo  = $balance*$BalancePercent/100;
 //if ($todepo > $MaxBalance) {
 //    $todepo = $MaxBalance;
 //}
