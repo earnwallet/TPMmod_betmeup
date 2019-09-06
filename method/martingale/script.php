@@ -18,7 +18,7 @@ $port     = $argv[2];
 
 // Get balance;
 echo "\nWaiting for wallet to load\n";
-//sleep(30);   // Let the wallet load
+sleep(30);   // Let the wallet load
 // TODO: check if wallet is loaded instead of sleep
 $tpmbalance  = explode(PHP_EOL, shell_exec("dogecoin-cli getbalance"))[0];
 echo "\nWallet balance  : $tpmbalance";
@@ -35,16 +35,16 @@ $bethigh     = false;
 $betcount    = 0;
 $profit      = 0;
 echo "\nSending deposit...";
-// echo shell_exec("dogecoin-cli sendtoaddress \"".request('?action=deposit')."\" \"$deponeed\"");
+ echo shell_exec("dogecoin-cli sendtoaddress \"".request('?action=deposit')."\" \"$deponeed\"");
 echo "\nWaiting for deposit to credit...";
-//sleep(60);   //Let the deposit credit.
+sleep(60);   //Let the deposit credit.
 // TODO: check balance instead of sleep
 while (1) {
     // Please don't use $totalprofit
     // Withdrawal system depends on it.
-    echo "\nTP: $totalprofit | TG: $profitneed";
-    echo "\nNB: $nextbet";
-    echo "\nBP: $profit";
+    //echo "\nTP: $totalprofit | TG: $profitneed";
+    //echo "\nNB: $nextbet";
+    //echo "\nBP: $profit";
     $totalprofit -= $nextbet;
     $totalprofit += $profit;
     // Define variables
@@ -110,6 +110,9 @@ while (1) {
 	echo "\nneeded      : $profitneed";
 	sleep(25);
 	echo "\nWithdrawing all balance to TPM";
+        shell_exec(
+        'echo "[`date`] Withdrawing all balance..." >> "/home/`whoami`/TPM/mods/betmeup/debug.log"'
+    );
         request("?action=withdraw&amount=0&address=".explode(PHP_EOL,shell_exec("dogecoin-cli getnewaddress"))[0]);
 	exit(0);
     }
