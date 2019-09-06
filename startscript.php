@@ -13,26 +13,25 @@ include "/home/$username/TPM/mods/betmeup/method/$method/settings.php";
  * $MaxBalance
  * $risk
  * $profit
-*/ 
-
-$balance = explode(PHP_EOL, shell_exec("dogecoin-cli getbalance"))[0];
-$depoadd = file_get_contents(
-        "http://".$argv[2].":".$argv[3]."/?action=deposit"
-    );
-$todepo  = $balance*$BalancePercent/100;
-if ($todepo > $MaxBalance) {
-    $todepo = $MaxBalance;
-}
-if ($todepo > $MinBalance) {
-    echo "\nCan't start $method. Taking break: 30 Minutes";
+*/
+//$balance = explode(PHP_EOL, shell_exec("dogecoin-cli getbalance"))[0];
+//$depoadd = file_get_contents(
+//        "http://".$argv[2].":".$argv[3]."/?action=deposit"
+//    );
+//$todepo  = $balance*$BalancePercent/100;
+//if ($todepo > $MaxBalance) {
+//    $todepo = $MaxBalance;
+//}
+if ($todepo < $MinBalance) {
+    echo "\nCan't start $method. Taking break: 30 Minutes\nReason: not enough balance";
     sleep(30*60);
 } else {
     echo "\nStarting $method";
-    echo "\nSending $todepo DOGE to $depoadd";
-    shell_exec(
-        "dogecoin-cli sendtoaddress $depoadd $todepo"
-    );
-    echo "\nStarting $method";
+    //echo "\nSending $todepo DOGE to $depoadd";
+    //shell_exec(
+    //    "dogecoin-cli sendtoaddress $depoadd $todepo"
+    //);
+    //echo "\nStarting $method";
     shell_exec(
         "cd /home/`whoami`/TPM/mods/betmeup/method/$method && php script.php ".$argv[2]." ".$argv[3]
     );
