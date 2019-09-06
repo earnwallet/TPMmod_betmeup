@@ -103,7 +103,7 @@ while (1) {
 
     // Do not betting here
     shell_exec(
-        'echo "[`date`] (bet: '.round($previousbet*10^8,8).') [win: '.$win.'] [profit: '.$totalprofit.'] ['.round($profitneed/$totalprofit/100,2).'%]" >> "/home/`whoami`/TPM/mods/betmeup/debug.log"'
+        'echo "[`date`] (bet: '.round($previousbet*100000000,8).') [win: '.$win.'] [profit: '.$totalprofit.'] ['.round($totalprofit/$profitneed/100,2).'%]" >> "/home/`whoami`/TPM/mods/betmeup/debug.log"'
     );
     if ($totalprofit > $profitneed) {
 	echo "\ntotal profit: $totalprofit";
