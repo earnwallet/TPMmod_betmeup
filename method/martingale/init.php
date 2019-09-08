@@ -1,7 +1,7 @@
 <?php
 // Get balance;
-debug("Waiting for wallet to load");
-sleep(30);   // Let the wallet load
+//debug("Waiting for wallet to load");
+//sleep(30);   // Let the wallet load
 // TODO: check if wallet is loaded instead of sleep
 $tpmbalance  = explode(PHP_EOL, shell_exec("dogecoin-cli getbalance"))[0];
 debug("Wallet balance     : $tpmbalance");
