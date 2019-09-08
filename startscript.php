@@ -2,6 +2,8 @@
 // php startscript.php script_name 127.0.0.1 42999
 // xxx $argv[0]        $argv[1]    $argv[2]  $argv[3]
 <?php
+echo "\nLoading wallet\n";
+sleep(120);
 while (1) {
 $username = explode(PHP_EOL, shell_exec("whoami"))[0];
 $method   = $argv[1];
@@ -24,7 +26,7 @@ $todepo  = $balance*$BalancePercent/100;
 //}
 if ($todepo < $MinBalance) {
     echo "\nCan't start $method. Taking break: 30 Minutes\nReason: not enough balance";
-    sleep(30*60);
+    sleep(1*60);
 } else {
     echo "\nStarting $method";
     //echo "\nSending $todepo DOGE to $depoadd";
@@ -35,7 +37,7 @@ if ($todepo < $MinBalance) {
     shell_exec(
         "cd /home/`whoami`/TPM/mods/betmeup/method/$method && php script.php ".$argv[2]." ".$argv[3]
     );
-    echo "Script exited. Taking 30 Minutes break";
-    sleep(30*60);
+    echo "Script exited. Taking 15 Minutes break";
+    sleep(15*60);
 }
 }

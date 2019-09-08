@@ -1,7 +1,5 @@
 cd "/home/`whoami`/TPM/mods/betmeup/method"
 
-echo "Waiting for wallet to load...";
-sleep 120;
 echo "Starting...";
 for f in *;
 do
